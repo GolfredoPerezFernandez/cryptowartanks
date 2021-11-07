@@ -11,7 +11,6 @@ import { VirtualListView, VirtualListViewItemInfo } from 'reactxp-virtuallistvie
 import { VirtualListCellRenderDetails } from 'reactxp-virtuallistview/dist/VirtualListCell';
 import { ComponentBase } from 'resub';
 
-import AppConfig from '../app/AppConfig';
 import HoverButton from '../controls/HoverButton';
 import { Colors, Fonts, FontSizes } from '../app/Styles';
 
@@ -19,7 +18,6 @@ import { Todo } from '../models/TodoModels';
 import TodosStore from '../stores/TodosStore';
 
 import TodoListItem from './TodoListItem';
-import { BooleanKeyframeTrack } from 'three';
 
 interface TodoListItemInfo extends VirtualListViewItemInfo {
     todo: Todo;
@@ -85,6 +83,11 @@ const _styles = {
 };
 import * as UI from '@sproutch/ui';
 
+const Moralis = require('moralis');
+const serverUrl = "https://soli2aousjbm.usemoralis.com:2053/server";
+const appId = "EYoSle1CvNFbGig2fgrKzv5zsCcjjn2PYn8W2uWO";
+Moralis.start({ serverUrl, appId });
+
 export default class TodoListPanel extends ComponentBase<TodoListPanelProps, TodoListPanelState> {
     protected _buildState(props: TodoListPanelProps, initState: boolean): Partial<TodoListPanelState> | undefined {
         const partialState: Partial<TodoListPanelState> = {
@@ -111,7 +114,6 @@ export default class TodoListPanel extends ComponentBase<TodoListPanelProps, Tod
 
         return partialState;
     }
-
     render() {
         return (
             <RX.View useSafeInsets={true} style={_styles.container}>

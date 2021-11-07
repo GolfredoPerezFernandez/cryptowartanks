@@ -75,8 +75,8 @@ export default class TodoListItem extends ComponentBase<TodoListItemProps, TodoL
     render(): JSX.Element | null {
         return (
             <HoverButton
-                onRenderChild={ this._onRenderItem }
-                onPress={ this._onPress }/>
+                onRenderChild={this._onRenderItem}
+                onPress={this._onPress} />
         );
     }
 
@@ -84,7 +84,7 @@ export default class TodoListItem extends ComponentBase<TodoListItemProps, TodoL
         // Prevent VirtualListView.onItemSelected from
         // being triggering in the web app.
         e.stopPropagation();
-        this.props.onPress(this.props.todo.id);
+        this.props.onPress(this.props.todo.token_id.toString());
     };
 
     private _onRenderItem = (isHovering: boolean) => {
@@ -99,38 +99,44 @@ export default class TodoListItem extends ComponentBase<TodoListItemProps, TodoL
         const searchString = this.props.searchString ? this.props.searchString.trim().toLowerCase() : '';
         let searchSubstrIndex = -1;
         if (searchString) {
-            searchSubstrIndex = this.props.todo.text.toLowerCase().indexOf(searchString);
+            searchSubstrIndex = this.props.todo.token_id.toString().toLowerCase().indexOf(searchString);
         }
 
         if (searchSubstrIndex >= 0) {
             nameText = (
-                <RX.Text style={ _styles.todoNameText } numberOfLines={ 1 }>
-                    <RX.Text numberOfLines={ 1 }>
-                        { this.props.todo.text.substr(0, searchSubstrIndex) }
+                <RX.Text style={_styles.todoNameText} numberOfLines={1}>
+                    <RX.Text numberOfLines={1}>
+                        {this.props.todo.token_id.toString().substr(0, searchSubstrIndex)}
                     </RX.Text>
-                    <RX.Text style={ _styles.todoNameTextSelected } numberOfLines={ 1 }>
-                        { this.props.todo.text.substr(searchSubstrIndex, searchString.length) }
+                    <RX.Text style={_styles.todoNameTextSelected} numberOfLines={1}>
+                        {this.props.todo.token_id.toString().substr(searchSubstrIndex, searchString.length)}
                     </RX.Text>
-                    <RX.Text numberOfLines={ 1 }>
-                        { this.props.todo.text.substr(searchSubstrIndex + searchString.length) }
+                    <RX.Text numberOfLines={1}>
+                        {this.props.todo.token_id.toString().substr(searchSubstrIndex + searchString.length)}
                     </RX.Text>
                 </RX.Text>
             );
         } else {
             nameText = (
-                <RX.Text style={ _styles.todoNameText } numberOfLines={ 1 }>
-                    { this.props.todo.text }
+                <RX.Text style={_styles.todoNameText} numberOfLines={1}>
+                    {this.props.todo.token_id.toString()}
                 </RX.Text>
             );
         }
 
         return (
-            <RX.View style={ buttonStyles }>
+            <RX.View style={buttonStyles}>
                 <RX.Image
-                    style={ _styles.todoImage }
-                    source={ ImageSource.todoSmall }
+                    style={_styles.todoImage}
+                    source={ImageSource.todoSmall}
                 />
-                { nameText }
+                {nameText}
+                <RX.Text style={_styles.todoNameText}>
+                    {this.props.todo.class == "1" ? "Sergeant" : this.props.todo.class == "0" ? "Recruit" : "General"}
+                </RX.Text>
+                <RX.Text style={_styles.todoNameText}>
+                    {this.props.todo.rare == "1" ? "UnCommon" : this.props.todo.rare == "0" ? "Common" : "Rare"}
+                </RX.Text>
             </RX.View>
         );
     };

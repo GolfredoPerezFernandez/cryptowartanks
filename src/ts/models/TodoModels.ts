@@ -6,8 +6,14 @@
 */
 
 export interface Todo {
-    id: string;
-    creationTime: number;
-    text: string;
+    token_address: string;
+    token_id: number;
+    owner_of: string;
+    contract_type: string;
+    name: string;
+    symbol: string;
+    rare: string;
+    class: string;
+    token_uri: string;
     _searchTerms: string;
 }

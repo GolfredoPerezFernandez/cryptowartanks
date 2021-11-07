@@ -21,23 +21,24 @@ class TodosStore extends StoreBase {
         });
     }
 
-    addTodo(todoText: string) {
-        const now = Date.now().valueOf();
-        const newTodo: Todo = {
-            id: now.toString(),
-            creationTime: now,
-            text: todoText,
-            _searchTerms: todoText,
-        };
-
-        this._todos = this._todos.concat(newTodo);
+    addTodo(tod: Todo) {
+        this._todos = this._todos.concat(tod);
 
         // Asynchronously write the new todo item to the DB.
-        LocalDb.putTodo(newTodo);
 
         this.trigger();
 
-        return newTodo;
+        return tod;
+    }
+
+    setTodos(tod: Todo[]) {
+        this._todos = tod
+
+        // Asynchronously write the new todo item to the DB.
+
+        this.trigger();
+
+        return this._todos;
     }
 
     @autoSubscribe
@@ -47,11 +48,11 @@ class TodosStore extends StoreBase {
 
     @autoSubscribe
     getTodoById(todoId: string) {
-        return _.find(this._todos, todo => todo.id === todoId);
+        return _.find(this._todos, todo => todo.token_id.toString() === todoId);
     }
 
     deleteTodo(todoId: string) {
-        this._todos = _.filter(this._todos, todo => todo.id !== todoId);
+        this._todos = _.filter(this._todos, todo => todo.token_id.toString() !== todoId);
 
         // Asynchronously delete the todo item from the DB.
         LocalDb.deleteTodo(todoId);

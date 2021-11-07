@@ -97,6 +97,7 @@ interface userMoralis {
 import * as UI from '@sproutch/ui';
 import AccountMenuButton2 from './AccountMenuButton2';
 import CurrentUserStore from '../stores/CurrentUserStore';
+import TodosStore from '../stores/TodosStore';
 
 interface TopBarCompositeState {
     isLogin: boolean;
@@ -169,6 +170,7 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
         CurrentUserStore.setUser('', '', '', '', '', '', '')
 
 
+        CurrentUserStore.setCargando(false)
         NavContextStore.navigateToTodoList(undefined, false, true)
         await Moralis.User.logOut();
     }
@@ -176,26 +178,14 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
     _onPressTodo = async (e: RX.Types.SyntheticEvent) => {
         e.stopPropagation()
         CurrentUserStore.setCargando(true)
-        const chainId2 = 80001;
-        const chainName = "POLYGON Mumbai";
-        const currencyName = "MATIC";
-        const currencySymbol = "MATIC";
-        const rpcUrl = "https://speedy-nodes-nyc.moralis.io/d260aa2c8aca7707222e4d3c/polygon/mumbai";
-        const blockExplorerUrl = "https://explorer-mumbai.maticvigil.com/";
+
         await Moralis.enableWeb3()
-        await Moralis.addNetwork(
-            chainId2,
-            chainName,
-            currencyName,
-            currencySymbol,
-            rpcUrl,
-            blockExplorerUrl
-        )
 
-
-        await Moralis.switchNetwork('0x13881');
         try {
-            return await Moralis.Web3.authenticate().then(async (user: any) => {
+
+            await Moralis.switchNetwork('0x4');
+
+            await Moralis.authenticate().then(async (user: any) => {
                 let username = user.get('username')
                 let createdAt = user.get('createdAt')
                 let sessionToken = user.get('sessionToken')
@@ -204,7 +194,9 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
 
 
                 let avatar = user.get('avatar')
-                CurrentUserStore.setCargando(false)
+
+                const items = await Moralis.Cloud.run('getAllItemsByUser', { ownerAddress: address });
+                await TodosStore.setTodos(items)
 
                 if (avatar === undefined) {
 
@@ -217,7 +209,10 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                     CurrentUserStore.setUser(username, '', createdAt, sessionToken, updatedAt, avatar, address)
                     CurrentUserStore.setLogin(true)
                 }
+
+                CurrentUserStore.setCargando(false)
             })
+            return
         } catch {
 
 
