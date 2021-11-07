@@ -48,8 +48,8 @@ function handler(request, response) {
     var knownHosts = [
         'localhost:5000',
         'localhost',
-        'opentransfer.herokuapp.com',
-        'http://opentransfer.herokuapp.com/',
+        'cryptowartanks.herokuapp.com',
+        'http://cryptowartanks.herokuapp.com/',
     ];
 
     if (!_.includes(knownHosts, request.headers.host)) {
