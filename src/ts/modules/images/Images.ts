@@ -18,4 +18,18 @@ export interface ImageSourceBase {
     metamask: string;
     moralis: string;
     background: string;
+    twitter: string;
+    telegram: string;
+    discord: string;
+    alone: string;
+    ctf: string;
+    dm: string;
+    gamemode: string;
+    lot: string;
+    select: string;
+    global: string;
+    tank2: string;
+    recruit: string;
+    general: string;
+    sergeant: string;
 }

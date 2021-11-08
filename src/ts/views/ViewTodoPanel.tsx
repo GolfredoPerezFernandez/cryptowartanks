@@ -39,6 +39,7 @@ const _styles = {
         alignItems: 'center',
     }),
 };
+import ImageSource from 'modules/images';
 
 
 export default class ViewTodoPanel extends ComponentBase<ViewTodoPanelProps, ViewTodoPanelState> {
@@ -56,9 +57,14 @@ export default class ViewTodoPanel extends ComponentBase<ViewTodoPanelProps, Vie
                 <RX.Text style={_styles.todoText}>
                     {this.state.todo ? this.state.todo.token_id : ''}
                 </RX.Text>
+
                 <RX.Text style={_styles.todoText}>
                     {this.state.todo ? this.state.todo.token_address : ''}
                 </RX.Text>
+
+                {this.state.todo ? this.state.todo.class == "1" ? <RX.Image resizeMethod={'resize'} resizeMode={'contain'} style={{ borderRadius: 12, height: 500, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.sergeant} /> : this.state.todo.class == "0" ? <RX.Image resizeMethod={'resize'} resizeMode={'contain'} style={{ borderRadius: 12, height: 500, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.recruit} /> : this.state.todo.class == "2" ? <RX.Image resizeMethod={'resize'} resizeMode={'contain'} style={{ borderRadius: 12, height: 500, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.general} /> : null : null}
+
+
                 <RX.Text style={_styles.todoText}>
                     {this.state.todo ? this.state.todo.class == "1" ? "Sergeant" : this.state.todo.class == "0" ? "Recruit" : this.state.todo.class == "2" ? "Genral" : "" : ''}
                 </RX.Text>

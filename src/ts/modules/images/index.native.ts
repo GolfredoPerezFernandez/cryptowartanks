@@ -26,7 +26,21 @@ class ImageSource implements ImageSourceBase {
     get box2() { return require('../../../images/box2.png'); }
     get box3() { return require('../../../images/box3.png'); } 
        get tokenomics() { return require('../../../images/tokenomics.png'); }
+       get twitter() { return require('../../../images/twitter.png'); }
+       get telegram() { return require('../../../images/telegram.png'); }
+       get discord() { return require('../../../images/discord.png'); }
 
+       get alone() { return require('../../../images/alone.jpg'); }
+       get dm() { return require('../../../images/dm.png'); }
+       get select() { return require('../../../images/select.png'); }
+       get lot() { return require('../../../images/lot.jpg'); }
+       get gamemode() { return require('../../../images/gamemode.jpg'); }
+       get tank2() { return require('../../../images/tank2.jpg'); }
+       get global() { return require('../../../images/global.jpg'); }
+       get ctf() { return require('../../../images/ctf.png'); }
+       get general() { return require('../../../images/general.png'); }
+       get recruit() { return require('../../../images/recruit.png'); }
+       get sergeant() { return require('../../../images/sergeant.png'); }
 
 }
 export default new ImageSource();

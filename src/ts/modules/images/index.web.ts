@@ -20,7 +20,23 @@ class ImageSource implements ImageSourceBase {
     box1 = AppConfig.getImagePath('box1.png');
     box2 = AppConfig.getImagePath('box2.png');
     box3 = AppConfig.getImagePath('box3.png');
-    tokenomics = AppConfig.getImagePath('tokenomics.png');
+    tokenomics = AppConfig.getImagePath('tokenomics.png');    
+    discord = AppConfig.getImagePath('discord.png');
+    telegram = AppConfig.getImagePath('telegram.png');
+    twitter = AppConfig.getImagePath('twitter.png');
+
+    alone = AppConfig.getImagePath('alone.jpg');
+    dm = AppConfig.getImagePath('dm.png');
+    gamemode = AppConfig.getImagePath('gamemode.jpg');
+    lot = AppConfig.getImagePath('lot.jpg');
+    select = AppConfig.getImagePath('select.png');
+    tank2 = AppConfig.getImagePath('tank2.jpg');
+    global = AppConfig.getImagePath('global.jpg');
+    ctf = AppConfig.getImagePath('cft.png');
+    recruit = AppConfig.getImagePath('recruit.png');
+    general = AppConfig.getImagePath('general.png');
+    sergeant = AppConfig.getImagePath('sergeant.png');
+    
 }
 
 export default new ImageSource();

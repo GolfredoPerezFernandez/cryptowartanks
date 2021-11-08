@@ -66,6 +66,12 @@ const _styles = {
 
     label: RX.Styles.createTextStyle({
         font: Fonts.displayBold,
+        fontSize: FontSizes.size16,
+        color: 'white',
+    }),
+
+    label2: RX.Styles.createTextStyle({
+        font: Fonts.displayBold,
         fontSize: FontSizes.size12,
         color: 'white',
     })
@@ -140,15 +146,15 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                 {leftContents}
                 <RX.View style={_styles.barControlsContainer}>
 
-                    <UI.Button onPress={() => NavContextStore.navigateToTodoList(undefined, false, false, true)} style={{ root: [{ alignSelf: 'flex-start', marginLeft: 15, height: 35 }], content: [{ width: 130, borderColor: 'black', borderRadius: 11, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }], label: _styles.label }
+                    <UI.Button onPress={() => NavContextStore.navigateToTodoList(undefined, false, false, true)} style={{ root: [{ alignSelf: 'flex-start', marginLeft: 15, height: 35 }], content: [{ width: 130, borderColor: 'black', borderRadius: 11, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }], label: _styles.label2 }
                     } elevation={4} variant={"outlined"} label="TOKENOMICS" />
 
 
-                    <UI.Button onPress={() => NavContextStore.navigateToTodoList(undefined, false, false, false, true)} style={{ root: [{ alignSelf: 'flex-start', marginLeft: 15, height: 35 }], content: [{ width: 130, borderColor: 'black', borderRadius: 11, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }], label: _styles.label }
+                    <UI.Button onPress={() => NavContextStore.navigateToTodoList(undefined, false, false, false, true)} style={{ root: [{ alignSelf: 'flex-start', marginLeft: 15, height: 35 }], content: [{ width: 130, borderColor: 'black', borderRadius: 11, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }], label: _styles.label2 }
                     } elevation={4} variant={"outlined"} label="ROAD MAP" />
 
 
-                    <UI.Button onPress={() => RX.Linking.openUrl('https://whitepaper.cryptowartanks.com/')} style={{ root: [{ alignSelf: 'flex-start', marginLeft: 15, height: 35 }], content: [{ width: 130, borderColor: 'black', borderRadius: 11, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }], label: _styles.label }
+                    <UI.Button onPress={() => RX.Linking.openUrl('https://whitepaper.cryptowartanks.com/')} style={{ root: [{ alignSelf: 'flex-start', marginLeft: 15, height: 35 }], content: [{ width: 130, borderColor: 'black', borderRadius: 11, justifyContent: 'center', alignItems: 'center', alignSelf: 'center' }], label: _styles.label2 }
                     } elevation={4} variant={"outlined"} label="WHITEPAPER" />
 
 
@@ -156,9 +162,9 @@ export default class TopBarComposite extends ComponentBase<TopBarCompositeProps,
                         <AccountMenuButton2 onLogOut={this.onLogOut} username={this.state.user.ethAddress} avatar={this.state.user.avatar === '' ? '' : this.state.user.avatar} onPress={() => null} />
                         : this.state.isCargando ? <RX.View style={{ width: 250, justifyContent: 'center', alignItems: 'center', marginLeft: 100, marginRight: 50 }}> <UI.Spinner color='white' size='medium' /></RX.View> :
                             <UI.Button onPress={this._onPressTodo} iconSlot={iconStyle => (
-                                <RX.Image source={ImageSource.metamask} style={{ marginTop: 0, alignSelf: 'center', marginRight: 5, width: 18, height: 18 }} />
-                            )} style={{ root: [{ marginRight: 50, marginLeft: 100 }], content: [{ width: 250, marginBottom: 5, borderRadius: 11, }], label: _styles.label }
-                            } elevation={4} variant={"outlined"} label="Connect with Metamask" />
+                                <RX.Image source={ImageSource.metamask} style={{ marginTop: 0, alignSelf: 'center', marginRight: 3, width: 20, height: 20 }} />
+                            )} style={{ root: [{ marginRight: 50, marginLeft: 100 }], content: [{ borderWidth: 0, borderColor: 'yellow', width: 250, height: 50, marginBottom: 5, borderRadius: 11, backgroundColor: 'green' }], label: _styles.label }
+                            } elevation={4} variant={"outlined"} label="METAMASK" />
                     }
                 </RX.View>
             </RX.View>
