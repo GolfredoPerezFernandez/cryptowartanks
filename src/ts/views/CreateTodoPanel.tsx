@@ -22,7 +22,7 @@ const _styles = {
         flex: 1,
         alignSelf: 'stretch',
         padding: 16,
-        backgroundColor: 'black',
+        backgroundColor: 'transparent',
     }),
     editTodoItem: RX.Styles.createTextInputStyle({
         margin: 8,

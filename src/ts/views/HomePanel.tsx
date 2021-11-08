@@ -43,8 +43,8 @@ const _styles = {
     }),
     text5: RX.Styles.createTextStyle({
         font: Fonts.displayBold,
-        color: 'black',
-        fontSize: FontSizes.size32,
+        color: 'white',
+        fontSize: FontSizes.size14,
         textAlign: 'center'
     }),
     label: RX.Styles.createTextStyle({
@@ -101,6 +101,7 @@ import ImageSource from 'modules/images';
 import CurrentUserStore from '../stores/CurrentUserStore';
 import TodosStore from '../stores/TodosStore';
 import NavContextStore from '../stores/NavContextStore';
+import CreateTodoPanel from './CreateTodoPanel';
 export default class HomePanel extends RX.Component<CreateTodoPanelProps, CreateTodoPanelState> {
 
 
@@ -223,11 +224,13 @@ export default class HomePanel extends RX.Component<CreateTodoPanelProps, Create
                 </RX.View>
 
                 <RX.Image resizeMethod={'resize'} resizeMode={'cover'} style={{ flex: 1, height: 800, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.gamemode} >
-
-                    <RX.Text style={[_styles.text3, { marginBottom: 20, }]}>
+                    <RX.Text style={[_styles.text5, { alignSelf: 'center', marginBottom: 20, }]}>
+                        {'GAME MODES'}
+                    </RX.Text>
+                    <RX.Text style={[_styles.text3, { marginBottom: 20, marginTop: 20, }]}>
                         {'DEATHMATCH'}
                     </RX.Text>
-                    <RX.Image resizeMethod={'scale'} resizeMode={'contain'} style={{ borderRadius: 12, height: 500, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.dm} />
+                    <RX.Image resizeMethod={'scale'} resizeMode={'contain'} style={{ borderRadius: 40, height: 500, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.dm} />
 
                     <RX.View style={{ height: 50 }} />
 
@@ -236,15 +239,32 @@ export default class HomePanel extends RX.Component<CreateTodoPanelProps, Create
                     <RX.Text style={[_styles.text3, { marginBottom: 20, }]}>
                         {'CAPTURE THE FLAG'}
                     </RX.Text>
-                    <RX.Image resizeMethod={'resize'} resizeMode={'contain'} style={{ borderRadius: 12, height: 500, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.cft} />
+                    <RX.Image resizeMethod={'resize'} resizeMode={'contain'} style={{ borderRadius: 40, height: 500, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.ctf} />
 
                     <RX.View style={{ height: 50 }} />
 
                 </RX.Image>
+                <RX.Image resizeMethod={'resize'} resizeMode={'cover'} style={{ flex: 1, height: 1000, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.global} >
+                    <RX.Text style={[_styles.text3, { marginBottom: 20, marginTop: 40, }]}>
+                        {'CHOOSE YOU TANK'}
+                    </RX.Text>
+                    <CreateTodoPanel />
+                </RX.Image>
+                <RX.View style={{ flex: 1, height: 500, backgroundColor: 'black', alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}  >
+                    <RX.Text style={[_styles.text3, { marginBottom: 20, }]}>
+                        {'OUR PARTNERS'}
+                    </RX.Text>
+                    <RX.View style={{ height: 50 }} />
 
+                </RX.View>
+                <RX.View style={{ flex: 1, height: 500, backgroundColor: 'black', alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}  >
+                    <RX.Text style={[_styles.text3, { marginBottom: 20, }]}>
+                        {'OUR PARTNERS'}
+                    </RX.Text>
+                    <RX.View style={{ height: 50 }} />
+
+                </RX.View>
                 <RX.View>
-                    <RX.Image resizeMethod={'resize'} resizeMode={'cover'} style={{ borderRadius: 12, height: 700, alignSelf: 'stretch', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} source={ImageSource.select} />
-
 
                 </RX.View>
             </RX.ScrollView >

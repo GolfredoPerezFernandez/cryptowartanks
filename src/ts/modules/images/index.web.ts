@@ -32,7 +32,7 @@ class ImageSource implements ImageSourceBase {
     select = AppConfig.getImagePath('select.png');
     tank2 = AppConfig.getImagePath('tank2.jpg');
     global = AppConfig.getImagePath('global.jpg');
-    ctf = AppConfig.getImagePath('cft.png');
+    ctf = AppConfig.getImagePath('ctf.png');
     recruit = AppConfig.getImagePath('recruit.png');
     general = AppConfig.getImagePath('general.png');
     sergeant = AppConfig.getImagePath('sergeant.png');

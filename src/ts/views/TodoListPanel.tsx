@@ -41,7 +41,7 @@ const _styles = {
     listScroll: RX.Styles.createViewStyle({
         flexDirection: 'column',
         alignSelf: 'stretch',
-        backgroundColor: 'black',
+        backgroundColor: 'transparent',
     }),
     todoListHeader: RX.Styles.createViewStyle({
         height: 60,
